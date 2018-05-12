@@ -1,0 +1,11 @@
+ 
+<div class="login-page">
+  <div class="form">
+    <form   class="login-form">
+        <input  name="phone" [value]='verify.phone'  type="text" [disabled]="true"/>
+      <input  name="code" [(ngModel)]="verify.code"  [ngModelOptions]="{standalone: true}"  type="text" placeholder="Verficiation Code" required />
+           <button class="btn btn-info" type="submit" (click)="checkVerifyCode()">Submit</button>
+      <p class="message">{{countDown | async}} </p>
+    </form>
+  </div>
+</div>

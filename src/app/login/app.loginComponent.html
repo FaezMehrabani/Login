@@ -1,0 +1,15 @@
+
+<div class="login-page">
+  <div class="form">
+    <form class="login-form">
+      <input [(ngModel)]="user.phone"  [ngModelOptions]="{standalone: true}"  type="text" placeholder="Phone Number"/>
+      <input [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" type="password" placeholder="Password"/>
+      <button class="loginButton" (click)="getToken()">login</button>
+      <p class="message"> <button type="button" (click)="forgotPassword()" class="btn btn-link"  >Forgot Password !</button></p>
+    </form>
+  </div>
+</div>
+ 
+ 
+
+
