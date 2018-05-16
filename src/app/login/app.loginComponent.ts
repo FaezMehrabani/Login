@@ -11,14 +11,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class LoginComponent  {
 
-  
+  public loading = false;
+
   constructor(private  apiService:  APIService,private router: Router, private route: ActivatedRoute) { }
   
-  user: User = {
-    phone:"09369043503",
-    password: "Masoud1234",
-    coordiantion : "22222"
-  };
+  user = new User();
   // user: User = {
   //   phone:"09122955499",
   //   password: "qwerty123",
@@ -26,18 +23,13 @@ export class LoginComponent  {
   // };
 
   public  getToken(){
-    
+    this.loading = true;
     this.apiService.getToken(this.user).subscribe((data:  any) => {
-       debugger;
-        console.log(data);
-    }),
-    (err: HttpErrorResponse) => {
-      if (err.error instanceof Error) {
-        console.log('Client-side error occured.');
-      } else {
-        console.log('Server-side error occured.');
-      }
-    }
+        this.loading = false;
+        alert("Welcome...");
+    },  (err) =>{
+      this.loading = false;
+     });
   }
 
   public forgotPassword() {

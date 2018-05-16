@@ -6,6 +6,7 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { timer} from 'rxjs';
 import { take, map } from 'rxjs/operators';
 import { MinuteSecondsPipe } from '../../assets/numberToTime';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -21,6 +22,7 @@ export class VerifyCodeComponent implements OnInit {
   };
   countDown;
   count = 60;
+  public loading = false;
 
   constructor(private  apiService:  APIService,private router: Router, private route: ActivatedRoute) {
     this.route.params.subscribe( params => {
@@ -35,13 +37,13 @@ export class VerifyCodeComponent implements OnInit {
 
     
   public checkVerifyCode(form) {
-    
-        this.router.navigate(['../../reset-password'],{ relativeTo: this.route });
-        
-        //   this.apiService.checkVerificationCode(this.verify.phone , this.verify.code).subscribe((data:  any) => {
-        //     this.router.navigate(['../reset-password'], { relativeTo: this.route });
-        //     console.log(data);
-        //  });
+            this.loading = true;
+            this.apiService.checkVerificationCode(this.verify.phone , this.verify.code).subscribe((data:  any) => {
+            this.loading = false;
+            this.router.navigate(['../../reset-password',data.token], { relativeTo: this.route });
+         },  (err) =>{
+          this.loading = false;
+         }  );
       }
 
 }
