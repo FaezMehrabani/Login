@@ -1,0 +1,17 @@
+
+<div class="my-container">
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+<div class="login-page">
+  <div class="form">
+    <form class="login-form" (ngSubmit)="getToken()" #testForm="ngForm" ngNativeValidate>
+      <input autofocus [(ngModel)]="user.phone"  [ngModelOptions]="{standalone: true}"  type="text" placeholder="Phone Number" [required]="true" />
+      <input  [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" type="password" placeholder="Password" [required]="true" />
+      <button class="loginButton" >login</button>
+      <p class="message"> <button type="button" (click)="forgotPassword()" class="btn btn-link"  >Forgot Password !</button></p>
+    </form>
+  </div>
+</div>
+</div>
+ 
+
+

@@ -1,0 +1,14 @@
+ 
+<div class="my-container">
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+<div class="login-page">
+  <div class="form">
+    <form   class="login-form" (ngSubmit)="checkVerifyCode()" #testForm="ngForm" ngNativeValidate>
+        <input  name="phone" [value]='verify.phone'  type="text" [disabled]="true"/>
+      <input autofocus name="code" [(ngModel)]="verify.code"  [ngModelOptions]="{standalone: true}"  type="text" placeholder="Verficiation Code" [required]="true"  />
+           <button class="btn btn-info" type="submit" >Submit</button>
+      <p class="message">{{countDown | async}} </p>
+    </form>
+  </div>
+</div>
+</div>
